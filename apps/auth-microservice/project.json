@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-kafka",
-  "$schema": "node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "src",
+  "name": "auth-microservice",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/auth-microservice/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,12 +11,12 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/nestjs-kafka",
-        "main": "src/main.ts",
-        "tsConfig": "tsconfig.app.json",
-        "assets": ["src/assets"],
+        "outputPath": "dist/apps/auth-microservice",
+        "main": "apps/auth-microservice/src/main.ts",
+        "tsConfig": "apps/auth-microservice/tsconfig.app.json",
+        "assets": ["apps/auth-microservice/src/assets"],
         "isolatedConfig": true,
-        "webpackConfig": "webpack.config.js"
+        "webpackConfig": "apps/auth-microservice/webpack.config.js"
       },
       "configurations": {
         "development": {},
@@ -27,14 +27,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "nestjs-kafka:build"
+        "buildTarget": "auth-microservice:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "nestjs-kafka:build:development"
+          "buildTarget": "auth-microservice:build:development"
         },
         "production": {
-          "buildTarget": "nestjs-kafka:build:production"
+          "buildTarget": "auth-microservice:build:production"
         }
       }
     },
@@ -42,14 +42,14 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["./src/**/*.ts"]
+        "lintFilePatterns": ["apps/auth-microservice/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "jest.config.app.ts",
+        "jestConfig": "apps/auth-microservice/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
